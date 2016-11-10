@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<list>
+	<trademark id="Kaco">
+		<name><![CDATA[Kaco]]></name>
+		<models>
+			<model c="0"><![CDATA[3500xi]]></model>
+			<model c="0"><![CDATA[5000xi]]></model>
+			<model c="0"><![CDATA[8000xi]]></model>
+			<model c="0"><![CDATA[25000xi]]></model>
+			<model c="0"><![CDATA[30000xi]]></model>
+			<model c="0"><![CDATA[35000xi]]></model>
+		</models>
+	</trademark>
+	<trademark id="Solarmax">
+		<name><![CDATA[Solarmax]]></name>
+		<models>
+			<model c="0"><![CDATA[c2500]]></model>
+			<model c="0"><![CDATA[c5000]]></model>
+			<model c="0"><![CDATA[10000MT]]></model>
+			<model c="0"><![CDATA[c25]]></model>
+			<model c="0"><![CDATA[c50]]></model>
+			<model c="0"><![CDATA[c100]]></model>
+		</models>
+	</trademark>
+	<trademark id="Sunways">
+		<name><![CDATA[Sunways]]></name>
+		<models>
+			<model c="0"><![CDATA[NT2500]]></model>
+			<model c="0"><![CDATA[NT4000]]></model>
+			<model c="0"><![CDATA[NT5000]]></model>
+			<model c="0"><![CDATA[NT6000]]></model>
+			<model c="0"><![CDATA[NT10000]]></model>
+			<model c="0"><![CDATA[PT30]]></model>
+		</models>
+	</trademark>
+	<trademark id="Power">
+		<name><![CDATA[Power]]></name>
+		<models>
+			<model c="0"><![CDATA[LTV20]]></model>
+			<model c="0"><![CDATA[LTV30]]></model>
+			<model c="0"><![CDATA[LTV50]]></model>
+			<model c="0"><![CDATA[LTV100]]></model>
+			<model c="0"><![CDATA[MTV100]]></model>
+			<model c="0"><![CDATA[MTV300]]></model>
+		</models>
+	</trademark>
+
+	</list>

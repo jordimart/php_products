@@ -1,0 +1,8 @@
+09/11/16 09:38:01 PM | error paint_template_error | page_products | response200
+10/11/16 04:02:38 PM | ERROR: [2] Illegal string offset 'total'
+Warning on line 142 in file /var/www/php_products/modules/page_products/controller/controller_page_products.class.php
+ | page_products | response 200
+10/11/16 04:02:38 PM | error paint_template_error | page_products | response200
+10/11/16 04:04:54 PM | ERROR: [2] Illegal string offset 'total'
+Warning on line 142 in file /var/www/php_products/modules/page_products/controller/controller_page_products.class.php
+ | page_products | response 200
