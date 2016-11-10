@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<modules>
+    <module>
+        <name>main</name>
+        <uri>main</uri>
+    </module>
+    <module>
+        <name>users</name>
+        <uri>users</uri>
+    </module>
+    <module>
+        <name>products</name>
+        <uri>products</uri>
+    </module>
+</modules>
