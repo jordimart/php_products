@@ -30,7 +30,7 @@ function paint_template_error($message) {
 
 //pintamos el html por php los productos en el modal
 function paint_template_products($arrData) {
-    print ("<script type='text/javascript' src='modules/page_products/view/js/modal_products.js' ></script>");
+    print ("<script type='text/javascript' src='/modules/page_products/view/js/modal_product.js' ></script>");
     print ("<section >");
     print ("<div class='container'>");
     print ("<div id='list_prod' class='row text-center pad-row'>");

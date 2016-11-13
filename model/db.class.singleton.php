@@ -1,5 +1,5 @@
 <?php
-    class Db {
+    class db {
         private $servidor;
         private $usuario;
         private $password;

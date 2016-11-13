@@ -1,9 +1,10 @@
+
 $(document).ready(function() {
   $('.product_name').click(function() {
     var id = this.getAttribute('id');
 
     $.get(
-        "modules/page_products/controller/controller_page_products.class.php?idProduct=" +
+        "index.php?module=page_products&function=id_product&idProduct=" +
         id,
         function(data, status) {
           var json = JSON.parse(data);
@@ -33,7 +34,7 @@ $(document).ready(function() {
         })
       .fail(function(xhr) {
         $("#results").load(
-          "modules/page_products/controller/controller_page_products.class.php?view_error=true"
+          "index.php?module=page_products&function=view_error_true&view_error=true"
         );
       });
   });

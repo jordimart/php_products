@@ -1,15 +1,11 @@
 <?php
 
 //controlador para el módulo de page products
-//include  with absolute route
-//$path = $_SERVER['DOCUMENT_ROOT']; //ruta virtualhost
+
 class controller_page_products {
     public function __construct() {
 include (UTILS_PRODUCTS . 'utils.inc.php'); //utilidades de este módulopara pintar html por php
-//define('SITE_ROOT', $path); //definimos el valor de Site_root
 
-//include $path . '/paths.php';
-//include $path . '/classes/Log.class.singleton.php';
 include (UTILS . 'common.inc.php');
 include (UTILS . 'filters.inc.php');
 include (UTILS . 'response_code.inc.php');
@@ -32,7 +28,7 @@ $_SESSION['module'] = "page_products"; //guardamos el valor del módulo
     public function autocomplete_page_products() {
 if ((isset($_GET["autocomplete"])) && ($_GET["autocomplete"] === "true")) {
     set_error_handler('ErrorHandler');
-    //$model_path = SITE_ROOT . '/modules/page_products/model/model/';
+    
     try {
 
         $nameProducts = loadModel(MODEL_PRODUCTS, "page_products_model", "select_column_products", "trademark");
@@ -43,7 +39,6 @@ if ((isset($_GET["autocomplete"])) && ($_GET["autocomplete"] === "true")) {
 
     if ($nameProducts) {
         $jsondata["trademark"] = $nameProducts;
-        //echo json_encode($nameProducts);
         echo json_encode($jsondata);
         exit;
     } else {
@@ -132,6 +127,7 @@ public function num_pages() {
 
 //obtenemos el número de páginas según los productos que hayan en base de datos
 if ((isset($_GET["num_pages"])) && ($_GET["num_pages"] === "true")) {
+    
     //filtrar $_GET["keyword"]
     if (isset($_GET["keyword"])) {
         $result = filter_string($_GET["keyword"]);
@@ -181,14 +177,16 @@ if ((isset($_GET["num_pages"])) && ($_GET["num_pages"] === "true")) {
     }
 }
 }
-function view_error(){
+
+
+function view_error_true(){
 if ((isset($_GET["view_error"])) && ($_GET["view_error"] === "true")) {
     //esta función pintaría el error mediante un template de php en html
     showErrorPage(0, "ERROR - 503 BD Unavailable");
 }
+}
 
-
-
+function view_error_false(){
 if ((isset($_GET["view_error"])) && ($_GET["view_error"] === "false")) {
     //esta función pintaría el error mediante un template de php en html
     showErrorPage(0, "ERROR - 404 NO DATA");
@@ -211,8 +209,7 @@ if (isset($_GET["idProduct"])) {
     set_error_handler('ErrorHandler');
     try {
         $arrValue = false;
-        //obtenemos los datos del prodcuto con LoadModel de base de datos
-        //$path_model = SITE_ROOT . '/modules/page_products/model/model/';
+        
         $arrValue = loadModel(MODEL_PRODUCTS, "page_products_model", "details_products", $id);
     } catch (Exception $e) {
         //error en caso de no poder consultar en la base de datos, se pinta en el log

@@ -1,6 +1,6 @@
 <?php
 //define('MODEL_PATH', SITE_ROOT . '/model/');
-//require (MODEL_PATH . "/Db.class.singleton.php");
+//require (MODEL_PATH . "/db.class.singleton.php");
 //require(SITE_ROOT . "/modules/page_products/model/DAO/page_products_dao.class.singleton.php");
 
 class page_products_bll {
@@ -11,7 +11,7 @@ class page_products_bll {
 
     private function __construct() {
         $this->dao = page_products_dao::getInstance();
-        $this->db = Db::getInstance();
+        $this->db = db::getInstance();
     }
 
     public static function getInstance() {

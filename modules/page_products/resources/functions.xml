@@ -21,12 +21,12 @@
         <uri>num_pages</uri>
     </function>
     <function>
-        <name>view_error</name>
-        <uri>view_error</uri>
+        <name>view_error_true</name>
+        <uri>view_error_true</uri>
     </function>
     <function>
-        <name>view_error</name>
-        <uri>view_error</uri>
+        <name>view_error_false</name>
+        <uri>view_error_false</uri>
     </function>
     <function>
         <name>id_product</name>
