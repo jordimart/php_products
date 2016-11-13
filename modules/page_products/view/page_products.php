@@ -1,6 +1,6 @@
-<script type="text/javascript" src="modules/page_products/view/js/jquery.bootpag.min.js"></script>
-<script type="text/javascript" src="modules/page_products/view/js/pages_products.js" ></script>
-<link rel="stylesheet" type="text/css" href="modules/page_products/view/css/main.css">
+<script type="text/javascript" src="/modules/page_products/view/lib/jquery.bootpag.min.js"></script>
+<script type="text/javascript" src="/modules/page_products/view/js/pages_products.js" ></script>
+<link rel="stylesheet" type="text/css" href="/modules/page_products/view/css/main.css">
 
 <br><br><br><br><br><br>
 <!--input de autocomplete añadida-->

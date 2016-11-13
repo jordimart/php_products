@@ -1,7 +1,7 @@
 <?php
 
 
-require(SITE_ROOT . "/modules/page_products/model/BLL/page_products_bll.class.singleton.php");
+//require(SITE_ROOT . "/modules/page_products/model/BLL/page_products_bll.class.singleton.php");
 
 class page_products_model {
 

@@ -13,17 +13,17 @@ function refresh() {
 
 function search(keyword) {
   //changes the url to avoid creating another different function
-  var urlbase =
-    "modules/page_products/controller/controller_page_products.class.php";
+  //var urlbase =
+    //"modules/page_products/controller/controller_page_products.class.php";
   if (!keyword)
-    url = urlbase + "?num_pages=true";
+    url = "index.php?module=page_products&function=num_pages&num_pages=true";
   else
-    url = urlbase + "?num_pages=true&keyword=" + keyword;
+    url = "index.php?module=page_products&function=num_pages&num_pages=true"+keyword;
 
   $.get(url, function(data, status) {
     var json = JSON.parse(data);
     var pages = json.pages;
-
+    console.log(data);
     if (!keyword) {
       url = urlbase;
       //console.log(url);
@@ -47,12 +47,12 @@ function search(keyword) {
         e.preventDefault();
         if (!keyword)
           $("#results").load(
-            "modules/page_products/controller/controller_page_products.class.php", {
+            "index.php?module=page_products&function=id_product", {
               'page_num': num
             });
         else
           $("#results").load(
-            "modules/page_products/controller/controller_page_products.class.php", {
+            "index.php?module=page_products&function=id_product", {
               'page_num': num,
               'keyword': keyword
             });
@@ -60,7 +60,7 @@ function search(keyword) {
       });
     } else {
       $("#results").load(
-        "modules/page_products/controller/controller_page_products.class.php?view_error=false"
+        "index.php?module=page_products&function=view_error_false&view_error=false"
       ); //view_error=false
       $('.pagination').html('');
       reset();
@@ -69,7 +69,7 @@ function search(keyword) {
 
   }).fail(function(xhr) {
     $("#results").load(
-      "modules/page_products/controller/controller_page_products.class.php?view_error=true"
+      "index.php?module=page_products&function=view_error_true&view_error=true"
     );
     $('.pagination').html('');
     reset();
@@ -79,7 +79,7 @@ function search(keyword) {
 
 function search_product(keyword) {
   $.get(
-    "modules/page_products/controller/controller_page_products.class.php?trademark=" +
+    "index.php?module=page_products&function=trademark&trademark=" +
     keyword,
     function(data, status) {
       var json = JSON.parse(data);
@@ -105,17 +105,11 @@ function search_product(keyword) {
       var price_product = document.getElementById('price_product');
       price_product.innerHTML = "Precio: " + product[0].sale_price +
         " €";
-      /*  var serial_number = document.getElementById('trademark');
-        serial_number.innerHTML = product[0].serial_number;
-        var country = document.getElementById('model');
-        country.innerHTML = product[0].model;
-        var sale_price = document.getElementById('price_product');
-        sale_price.innerHTML = "Price: " + product[0].sale_price + " €";
-        //sale_price.setAttribute("class", "special");*/
+     
 
     }).fail(function(xhr) {
     $("#results").load(
-      "modules/page_products/controller/controller_page_products.class.php?view_error=false"
+      "index.php?module=page_products&function=view_error_false&view_error=false"
     );
     $('.pagination').html('');
     reset();
@@ -124,8 +118,7 @@ function search_product(keyword) {
 
 function count_product(keyword) {
   $.get(
-    "modules/page_products/controller/controller_page_products.class.php?count_product=" +
-    keyword,
+    "index.php?module=page_products&function=count_products&count_product="+keyword,
     function(data, status) {
       var json = JSON.parse(data);
       var num_products = json.num_products;
@@ -133,7 +126,7 @@ function count_product(keyword) {
 
       if (num_products == 0) {
         $("#results").load(
-          "modules/page_products/controller/controller_page_products.class.php?view_error=false"
+          "index.php?module=page_products&function=view_error_false&view_error=false"
         ); //view_error=false
         $('.pagination').html('');
         reset();
@@ -146,7 +139,7 @@ function count_product(keyword) {
       }
     }).fail(function() {
     $("#results").load(
-      "modules/page_products/controller/controller_page_products.class.php?view_error=true"
+      "index.php?module=page_products&function=view_error_true&view_error=true"
     ); //view_error=false
     $('.pagination').html('');
     reset();
@@ -201,7 +194,7 @@ $(document).ready(function() {
   });
 
   $.get(
-    "modules/page_products/controller/controller_page_products.class.php?autocomplete=true",
+    "index.php?module=page_products&function=autocomplete_page_products&autocomplete=true",
     function(data, status) {
       var json = JSON.parse(data);
       var trademark = json.trademark;
@@ -228,7 +221,7 @@ $(document).ready(function() {
       });
     }).fail(function(xhr) {
     $("#results").load(
-      "modules/page_products/controller/controller_page_products.class.php?view_error=false"
+      "index.php?module=page_products&function=view_error_false&view_error=false"
     ); //view_error=false
     $('.pagination').html('');
     reset();

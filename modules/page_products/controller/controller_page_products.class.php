@@ -2,26 +2,40 @@
 
 //controlador para el módulo de page products
 //include  with absolute route
-$path = $_SERVER['DOCUMENT_ROOT']; //ruta virtualhost
+//$path = $_SERVER['DOCUMENT_ROOT']; //ruta virtualhost
+class controller_page_products {
+    public function __construct() {
+include (UTILS_PRODUCTS . 'utils.inc.php'); //utilidades de este módulopara pintar html por php
+//define('SITE_ROOT', $path); //definimos el valor de Site_root
 
-include $path . '/modules/page_products/utils/utils.inc.php'; //utilidades de este módulopara pintar html por php
-define('SITE_ROOT', $path); //definimos el valor de Site_root
-
-include $path . '/paths.php';
-include $path . '/classes/Log.class.singleton.php';
-include $path . '/utils/common.inc.php';
-include $path . '/utils/filters.inc.php';
-include $path . '/utils/response_code.inc.php';
-session_start();
+//include $path . '/paths.php';
+//include $path . '/classes/Log.class.singleton.php';
+include (UTILS . 'common.inc.php');
+include (UTILS . 'filters.inc.php');
+include (UTILS . 'response_code.inc.php');
+include(UTILS . "utils.inc.php");
+include LOG_DIR;
+//session_start();
 
 $_SESSION['module'] = "page_products"; //guardamos el valor del módulo
-
+    }
+    
+    public function page_products() {
+   			require_once(VIEW_PATH_INC."header.php"); 
+			require_once(VIEW_PATH_INC."menu.php");
+	
+            loadView('modules/page_products/view/', 'page_products.php');
+            
+            require_once(VIEW_PATH_INC."footer.html");
+        }
+    
+    public function autocomplete_page_products() {
 if ((isset($_GET["autocomplete"])) && ($_GET["autocomplete"] === "true")) {
     set_error_handler('ErrorHandler');
-    $model_path = SITE_ROOT . '/modules/page_products/model/model/';
+    //$model_path = SITE_ROOT . '/modules/page_products/model/model/';
     try {
 
-        $nameProducts = loadModel($model_path, "page_products_model", "select_column_products", "trademark");
+        $nameProducts = loadModel(MODEL_PRODUCTS, "page_products_model", "select_column_products", "trademark");
     } catch (Exception $e) {
         showErrorPage(2, "ERROR - 503 BD", 'HTTP/1.0 503 Service Unavailable', 503);
     }
@@ -29,6 +43,7 @@ if ((isset($_GET["autocomplete"])) && ($_GET["autocomplete"] === "true")) {
 
     if ($nameProducts) {
         $jsondata["trademark"] = $nameProducts;
+        //echo json_encode($nameProducts);
         echo json_encode($jsondata);
         exit;
     } else {
@@ -36,8 +51,9 @@ if ((isset($_GET["autocomplete"])) && ($_GET["autocomplete"] === "true")) {
         showErrorPage(2, "ERROR - 404 NO DATA", 'HTTP/1.0 404 Not Found', 404);
     }
 }
+    }
 
-
+public function trademark() {
 if (($_GET["trademark"])) {
     //filtrar $_GET["nom_product"]
 
@@ -47,7 +63,7 @@ if (($_GET["trademark"])) {
     } else {
         $search = '';
     }
-    $model_path = SITE_ROOT . '/modules/page_products/model/model/';
+    //$model_path = SITE_ROOT . '/modules/page_products/model/model/';
     set_error_handler('ErrorHandler');
     try {
 
@@ -55,7 +71,7 @@ if (($_GET["trademark"])) {
             'column' => 'trademark',
             'like' => $search
         );
-        $producto = loadModel($model_path, "page_products_model", "select_like_products", $arrArgument);
+        $producto = loadModel(MODEL_PRODUCTS, "page_products_model", "select_like_products", $arrArgument);
 
 
         //throw new Exception(); //que entre en el catch
@@ -73,7 +89,10 @@ if (($_GET["trademark"])) {
         showErrorPage(2, "ERROR - 404 NO DATA", 'HTTP/1.0 404 Not Found', 404);
     }
 }
-///////////////////mes parts////////////
+
+}
+
+public function count_product() {
 
 if (($_GET["count_product"])) {
     //filtrar $_GET["count_product"]
@@ -83,7 +102,7 @@ if (($_GET["count_product"])) {
     } else {
         $search = '';
     }
-    $model_path = SITE_ROOT . '/modules/page_products/model/model/';
+    //$model_path = SITE_ROOT . '/modules/page_products/model/model/';
     set_error_handler('ErrorHandler');
     try {
 
@@ -91,7 +110,7 @@ if (($_GET["count_product"])) {
             "column" => "trademark",
             "like" => $search
         );
-        $total_rows = loadModel($model_path, "page_products_model", "count_like_products", $arrArgument);
+        $total_rows = loadModel(MODEL_PRODUCTS, "page_products_model", "count_like_products", $arrArgument);
         //throw new Exception(); //que entre en el catch
     } catch (Exception $e) {
         showErrorPage(2, "ERROR - 503 BD", 'HTTP/1.0 503 Service Unavailable', 503);
@@ -107,8 +126,10 @@ if (($_GET["count_product"])) {
         showErrorPage(2, "ERROR - 404 NO DATA", 'HTTP/1.0 404 Not Found', 404);
     }
 }
+}
 
-//obtain num total pages
+public function num_pages() {
+
 //obtenemos el número de páginas según los productos que hayan en base de datos
 if ((isset($_GET["num_pages"])) && ($_GET["num_pages"] === "true")) {
     //filtrar $_GET["keyword"]
@@ -126,7 +147,7 @@ if ((isset($_GET["num_pages"])) && ($_GET["num_pages"] === "true")) {
     //definimos el número de productos por página
     $item_per_page = 6;
     //buscamos el modelo
-    $path_model = SITE_ROOT . '/modules/page_products/model/model/';
+    //$path_model = SITE_ROOT . '/modules/page_products/model/model/';
 
     //change work error apache
     set_error_handler('ErrorHandler');
@@ -138,7 +159,7 @@ if ((isset($_GET["num_pages"])) && ($_GET["num_pages"] === "true")) {
         );
 
         //este load utilizara la función de buscar el número total de productos
-        $arrValue = loadModel($path_model, "page_products_model", "count_like_products", $arrArgument);
+        $arrValue = loadModel(MODEL_PRODUCTS, "page_products_model", "count_like_products", $arrArgument);
         $get_total_rows = $arrValue[0]["total"]; //total records
         $pages = ceil($get_total_rows / $item_per_page); //break total records into pages
     } catch (Exception $e) {
@@ -159,18 +180,22 @@ if ((isset($_GET["num_pages"])) && ($_GET["num_pages"] === "true")) {
         showErrorPage(2, "ERROR - 404 NO DATA", 'HTTP/1.0 404 Not Found', 404);
     }
 }
-
-
+}
+function view_error(){
 if ((isset($_GET["view_error"])) && ($_GET["view_error"] === "true")) {
     //esta función pintaría el error mediante un template de php en html
     showErrorPage(0, "ERROR - 503 BD Unavailable");
 }
+
+
+
 if ((isset($_GET["view_error"])) && ($_GET["view_error"] === "false")) {
     //esta función pintaría el error mediante un template de php en html
     showErrorPage(0, "ERROR - 404 NO DATA");
 }
+}
 
-
+function id_product(){
 //Obtenemos según un id de producto seleccionado en el frontend los detalles del producto
 if (isset($_GET["idProduct"])) {
 
@@ -187,8 +212,8 @@ if (isset($_GET["idProduct"])) {
     try {
         $arrValue = false;
         //obtenemos los datos del prodcuto con LoadModel de base de datos
-        $path_model = SITE_ROOT . '/modules/page_products/model/model/';
-        $arrValue = loadModel($path_model, "page_products_model", "details_products", $id);
+        //$path_model = SITE_ROOT . '/modules/page_products/model/model/';
+        $arrValue = loadModel(MODEL_PRODUCTS, "page_products_model", "details_products", $id);
     } catch (Exception $e) {
         //error en caso de no poder consultar en la base de datos, se pinta en el log
         showErrorPage(2, "ERROR - 503 BD", 'HTTP/1.0 503 Service Unavailable', 503);
@@ -240,7 +265,7 @@ if (isset($_GET["idProduct"])) {
 
     //esto se utiliza para no perder la posición al paginar
     $position = (($page_number - 1) * $item_per_page);
-    $path_model = SITE_ROOT . '/modules/page_products/model/model/';
+    //$path_model = SITE_ROOT . '/modules/page_products/model/model/';
 
     $arrArgument = array(
         'column' => 'trademark',
@@ -251,7 +276,7 @@ if (isset($_GET["idProduct"])) {
     set_error_handler('ErrorHandler');
     //utilizamos load model para consultar en bd los productos a paginar
     try {
-        $arrValue = loadModel($path_model, "page_products_model", "select_like_limit_products", $arrArgument);
+        $arrValue = loadModel(MODEL_PRODUCTS, "page_products_model", "select_like_limit_products", $arrArgument);
     } catch (Exception $e) {
         //error si no se ha producido la consulta
         //esta función pintaría el error mediante un template de php en html
@@ -267,4 +292,6 @@ if (isset($_GET["idProduct"])) {
         //esta función pintaría el error mediante un template de php en html
         showErrorPage(0, "ERROR - 404 NO PRODUCTS");
     }
+}
+}
 }

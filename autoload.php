@@ -8,11 +8,11 @@
 	spl_autoload_register('loadClasses');
     
 	function loadClasses($className){
-		if( file_exists('modules/users/model/BLL/'.$className.'.class.singleton.php' ) ){//require(BLL_USERS . "user_bll.class.singleton.php");
-			set_include_path('modules/users/model/BLL/'); 
+		if( file_exists('modules/page_products/model/BLL/'.$className.'.class.singleton.php' ) ){//require(BLL_USERS . "user_bll.class.singleton.php");
+			set_include_path('modules/page_products/model/BLL/'); 
 			spl_autoload($className);
-		}elseif( file_exists('modules/users/model/DAO/'.$className.'.class.singleton.php' ) ){//require(DAO_USERS . "user_dao.class.singleton.php");
-			set_include_path('modules/users/model/DAO/');
+		}elseif( file_exists('modules/page_products/model/DAO/'.$className.'.class.singleton.php' ) ){//require(DAO_USERS . "user_dao.class.singleton.php");
+			set_include_path('modules/page_products/model/DAO/');
 			spl_autoload($className);
 		}elseif( file_exists('model/'.$className.'.class.singleton.php' ) ){//require(MODEL_PATH . "db.class.singleton.php");
 			set_include_path('model/');

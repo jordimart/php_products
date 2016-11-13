@@ -32,20 +32,13 @@
     				$arrData = $arrPassValue;
     			include_once($view_path);
     		} else {
-          //se modifica loadView, es mas sofisticado, de esta forma solo metiendo la vista también funcionará
-          $result = filter_num_int($rutaVista);
-        if ($result['resultado']) {
-            $rutaVista = $result['datos'];
-        } else {
-            $rutaVista = http_response_code();
-        }
-
-      $log = Log::getInstance();
-			$log->add_log_general("error loadView general", $_GET['module'], "response ".$rutaVista);
-			$log->add_log_user("error loadView general", "", $_GET['module'], "response ".$rutaVista);
-
-			$result = response_code($rutaVista);
+          $log = Log::getInstance();
+			$log->add_log_general("error loadView", $_GET['module'], "response ".http_response_code()); //$text, $controller, $function
+			$log->add_log_user("error loadView", "", $_GET['module'], "response ".http_response_code()); //$msg, $username = "", $controller, $function
+	
+			$result = response_code(http_response_code());
 			$arrData = $result;
-			require_once 'view/inc/error.php';
-    		}
-    	}
+			require_once VIEW_PATH_INC_ERROR. $result['code'] .'.php';
+			die();
+		}
+	}

@@ -16,7 +16,7 @@
                     </li>
                     <li class= <?php if($_GET['module'] == "page_products"){
                            echo "active";}else{ echo "";} ?> >
-                           <a href="index.php?module=page_products&view=page_products">List Products</a>
+                           <a href="index.php?module=page_products&function=page_products">List Products</a>
                     </li>
                   </ul>
                 </li>

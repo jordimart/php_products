@@ -6,3 +6,17 @@ error paint_template_error | 10.11.2016 04:02:38  |  User:   | page_products | r
 ERROR: [2] Illegal string offset 'total'
 Warning on line 142 in file /var/www/php_products/modules/page_products/controller/controller_page_products.class.php
  | 10.11.2016 04:04:54  |  User:   | page_products | response 200
+error loadView | 13.11.2016 03:33:34  |  User:   | page_products | response 200
+error loadView | 13.11.2016 03:35:23  |  User:   | page_products | response 200
+error loadView | 13.11.2016 03:35:26  |  User:   | page_products | response 200
+error loadView | 13.11.2016 03:42:12  |  User:   | page_products | response 200
+error loadView | 13.11.2016 03:42:18  |  User:   | page_products | response 200
+error loadView | 13.11.2016 03:42:18  |  User:   | page_products | response 200
+error loadView | 13.11.2016 03:42:31  |  User:   | page_products | response 200
+error loadView | 13.11.2016 03:42:34  |  User:   | page_products | response 200
+error loadView | 13.11.2016 03:42:42  |  User:   | page_products | response 200
+error loadView | 13.11.2016 03:42:42  |  User:   | page_products | response 200
+error loadView | 13.11.2016 03:43:01  |  User:   | page_products | response 200
+error loadView | 13.11.2016 03:47:50  |  User:   | page_products | response 200
+error loadView | 13.11.2016 03:49:17  |  User:   | page_products | response 200
+error loadView | 13.11.2016 03:58:00  |  User:   | page_products | response 200

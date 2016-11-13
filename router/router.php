@@ -1,6 +1,6 @@
 <?php 
 	require_once("paths.php"); 
-	require 'autoload.php';
+	require ('autoload.php');
 
 
 	if(PRODUCTION){ //estamos en producción

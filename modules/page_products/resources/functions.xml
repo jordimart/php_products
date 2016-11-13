@@ -1,36 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <functions>
     <function>
-        <name>list_products</name>
-        <uri>list_products</uri>
+        <name>page_products</name>
+        <uri>page_products</uri>
     </function>
     <function>
-        <name>autocomplete_products</name>
-        <uri>autocomplete_products</uri>
+        <name>autocomplete_page_products</name>
+        <uri>autocomplete_page_products</uri>
     </function>
     <function>
-        <name>nom_products</name>
-        <uri>nom_products</uri>
+        <name>trademark</name>
+        <uri>trademark</uri>
     </function>
     <function>
-        <name>count_products</name>
-        <uri>count_products</uri>
+        <name>count_product</name>
+        <uri>count_product</uri>
     </function>
     <function>
-        <name>num_pages_products</name>
-        <uri>num_pages_products</uri>
+        <name>num_pages</name>
+        <uri>num_pages</uri>
     </function>
     <function>
-        <name>view_error_true</name>
-        <uri>view_error_true</uri>
+        <name>view_error</name>
+        <uri>view_error</uri>
     </function>
     <function>
-        <name>view_error_false</name>
-        <uri>view_error_false</uri>
+        <name>view_error</name>
+        <uri>view_error</uri>
     </function>
     <function>
-        <name>idProduct</name>
-        <uri>idProduct</uri>
+        <name>id_product</name>
+        <uri>id_product</uri>
     </function>
     <function>
         <name>obtain_products</name>
