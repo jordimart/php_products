@@ -13,7 +13,8 @@
              
         </div>
         <div id="content">
-            <h2>The following error occurred:</h2>
+            <br><br><br><br><br><br>
+            <h2>The following error occurred: 400</h2>
             <p>The requested URL was not found on this server.</p>
             <P>Please check the URL or contact the <!--WEBMASTER//-->webmaster<!--WEBMASTER//-->.</p>
         </div>

@@ -94,10 +94,9 @@ function showErrorPage($code = 0, $message = "", $http = "", $num_http = 0) {
     switch ($code) {
         case 0:
             paint_template_error($message);
-            //die();
+            die();
             break;
         case 1:
-
             loadView($num_http);
             break;
         case 2:
@@ -106,13 +105,12 @@ function showErrorPage($code = 0, $message = "", $http = "", $num_http = 0) {
             $log->add_log_user($message, "", $_SESSION['module'], "response " . http_response_code()); //$msg, $username = "", $controller, $function
 
             $jsondata["error"] = $message;
-
             echo json_encode($jsondata);
-            //exit;
+            exit;
             break;
         case 3:
             paint_template_search($message);
-            //exit;
+            exit;
             break;
         case 4:
 

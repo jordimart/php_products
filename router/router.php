@@ -50,20 +50,18 @@ function handlerModule($URI_module, $URI_function) {
                 $controllerClass = "controller_" . $URI_module;
                 $obj = new $controllerClass;
             } else {
-                require_once(VIEW_PATH_INC . "header.php");
-                require_once(VIEW_PATH_INC . "menu.php");
-                showErrorPage(1, "", 'HTTP/1.0 400 Bad Request', 400);
-                require_once(VIEW_PATH_INC . "footer.html");
+                
+                showErrorPage(4, "", 'HTTP/1.0 400 Bad Request', 400);
+               
             }
             handlerfunction(((String) $module->name), $obj, $URI_function);
             break;
         }
     }
     if (!$exist) {
-        require_once(VIEW_PATH_INC . "header.php");
-        require_once(VIEW_PATH_INC . "menu.php");
-        showErrorPage(1, "", 'HTTP/1.0 400 Bad Request', 400);
-        require_once(VIEW_PATH_INC . "footer.html");
+       
+        showErrorPage(4, "", 'HTTP/1.0 400 Bad Request', 400);
+        
     }
 }
 
@@ -79,12 +77,11 @@ function handlerFunction($module, $obj, $URI_function) {
         }
     }
     if (!$exist) {
-        require_once(VIEW_PATH_INC . "header.php");
-        require_once(VIEW_PATH_INC . "menu.php");
-        showErrorPage(1, "", 'HTTP/1.0 400 Bad Request', 400);
-        require_once(VIEW_PATH_INC . "footer.html");
+        
+        showErrorPage(4, "", 'HTTP/1.0 400 Bad Request', 400);
+       
     } else {
-        //$obj->$event();
+      
         call_user_func(array($obj, $event));
     }
 }

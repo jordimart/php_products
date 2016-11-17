@@ -22,3 +22,10 @@ error loadView | 17.11.2016 07:04:25  |  User:   | ma | response 200
 error loadView | 17.11.2016 11:08:14  |  User:   | ma | response 400
 error loadView | 17.11.2016 11:09:31  |  User:   | ma | response 400
 error loadView | 17.11.2016 11:09:41  |  User:   | page_products | response 400
+error loadView | 17.11.2016 11:22:55  |  User:   | page_products | response 400
+error loadView | 17.11.2016 11:23:03  |  User:   | ma | response 400
+error loadView | 17.11.2016 11:23:13  |  User:   | page_products | response 400
+error loadView | 17.11.2016 11:24:09  |  User:   | page_products | response 400
+error loadView | 17.11.2016 11:24:25  |  User:   | page_products | response 400
+error loadView | 17.11.2016 11:24:42  |  User:   | ma | response 400
+error loadView | 17.11.2016 11:26:39  |  User:   | ma | response 400
