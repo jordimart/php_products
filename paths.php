@@ -24,7 +24,7 @@
     define('MODEL_PATH',SITE_ROOT.'model/');
     //view
     define('VIEW_PATH_INC',SITE_ROOT.'view/inc/');
-    define('VIEW_PATH_INC_ERROR',SITE_ROOT.'view/inc/templates_error/');
+    define('VIEW_PATH_INC_ERROR',SITE_ROOT.'view/inc/');
     //modules
     define('MODULES_PATH',SITE_ROOT.'modules/');
 

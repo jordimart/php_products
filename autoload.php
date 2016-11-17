@@ -18,4 +18,8 @@
 			set_include_path('model/');
 			spl_autoload($className);
 		}
+                elseif( file_exists('classes/'.$className.'.class.singleton.php' ) ){//require(MODEL_PATH . "log.class.singleton.php");
+			set_include_path('classes/');
+			spl_autoload($className);
+		}
 	}

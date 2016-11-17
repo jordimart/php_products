@@ -2,7 +2,7 @@
     class controller_main { 
         
         public function __construct() {
-            include(UTILS . "common.inc.php");
+            //include(UTILS . "common.inc.php");
         }
 
         public function begin() {

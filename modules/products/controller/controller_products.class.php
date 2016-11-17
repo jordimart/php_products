@@ -2,7 +2,7 @@
 
 include ($_SERVER['DOCUMENT_ROOT'] . "/modules/products/utils/functions_products.inc.php");
 include ($_SERVER['DOCUMENT_ROOT'] . "/utils/upload.php");
-include ($_SERVER['DOCUMENT_ROOT'] . "/utils/common.inc.php");
+//include ($_SERVER['DOCUMENT_ROOT'] . "/utils/common.inc.php");
 session_start();
 
 if ((isset($_POST['alta_products_json']))) {

@@ -3,3 +3,22 @@
 13/11/16 04:11:51 PM | error loadView | page_products | response 200
 13/11/16 04:16:45 PM | error loadView | page_products | response 200
 13/11/16 04:16:47 PM | error loadView | page_products | response 200
+14/11/16 11:11:06 AM | error paint_template_error | page_products | response200
+14/11/16 09:01:45 PM | error loadView | page_products | response 200
+14/11/16 09:04:01 PM | error paint_template_error | page_products | response200
+14/11/16 09:36:26 PM | error loadView | ma | response 200
+14/11/16 09:37:00 PM | error loadView | page_products | response 200
+14/11/16 09:41:11 PM | error loadView | page_products | response 200
+14/11/16 09:43:39 PM | error loadView | page_products | response 200
+14/11/16 09:44:26 PM | error loadView | ma | response 200
+14/11/16 09:51:16 PM | error loadView | ma | response 200
+14/11/16 09:53:34 PM | error loadView | ma | response 200
+14/11/16 09:53:36 PM | error loadView | ma | response 200
+14/11/16 09:53:37 PM | error loadView | ma | response 200
+16/11/16 09:33:58 PM | error loadView | ma | response 200
+16/11/16 09:36:09 PM | error loadView | page_products | response 200
+17/11/16 07:03:41 PM | error loadView | ma | response 200
+17/11/16 07:04:25 PM | error loadView | ma | response 200
+17/11/16 11:08:14 PM | error loadView | ma | response 400
+17/11/16 11:09:31 PM | error loadView | ma | response 400
+17/11/16 11:09:41 PM | error loadView | page_products | response 400

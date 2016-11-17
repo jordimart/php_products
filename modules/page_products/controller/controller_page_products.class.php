@@ -5,12 +5,12 @@
 class controller_page_products {
     public function __construct() {
 include (UTILS_PRODUCTS . 'utils.inc.php'); //utilidades de este módulopara pintar html por php
+//include (UTILS . 'filters.inc.php');
+//include (UTILS . 'common.inc.php');
 
-include (UTILS . 'common.inc.php');
-include (UTILS . 'filters.inc.php');
-include (UTILS . 'response_code.inc.php');
-include(UTILS . "utils.inc.php");
-include LOG_DIR;
+//include (UTILS . 'response_code.inc.php');
+//include(UTILS . "utils.inc.php");
+//include LOG_DIR;
 //session_start();
 
 $_SESSION['module'] = "page_products"; //guardamos el valor del módulo
