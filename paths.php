@@ -37,9 +37,9 @@
 
     //model products
     define('UTILS_PRODUCTS',SITE_ROOT.'modules/page_products/utils/');
-    define('PRODUCTS_JS_LIB_PATH', SITE_PATH . '/modules/page_products/view/lib/');
-    define('PRODUCTS_JS_PATH', SITE_PATH . '/modules/page_products/view/js/'); 
-    define('PRODUCTS_CSS_PATH', SITE_PATH . '/modules/page_products/view/css/');
+    define('PRODUCTS_JS_LIB_PATH','/modules/page_products/view/lib/'); 
+    define('PRODUCTS_JS_PATH', '/modules/page_products/view/js/'); 
+    define('PRODUCTS_CSS_PATH', '/modules/page_products/view/css/');
    
     define('MODEL_PATH_PRODUCTS',SITE_ROOT.'modules/page_products/model/');
     define('DAO_PRODUCTS',SITE_ROOT.'modules/page_products/model/DAO/');
