@@ -7,10 +7,14 @@
     //SITE_PATH
     define('SITE_PATH','https://'.$_SERVER['HTTP_HOST']);
 
-
     //CSS
-    define('CSS_PATH', SITE_PATH . 'view/css/');
+    define('CSS_PATH', '/view/css/');
+    
+    //JS
+    define('JS_PATH', '/view/js/');
 
+    //IMG
+    define('IMG_PATH', '/view/img/');
 
     //Define las rutas donde se guardarán los logs
     define('LOG_DIR',SITE_ROOT.'classes/Log.class.singleton.php');
@@ -27,7 +31,7 @@
     define('VIEW_PATH_INC_ERROR',SITE_ROOT.'view/inc/');
     //modules
     define('MODULES_PATH',SITE_ROOT.'modules/');
-
+    
     //resources
     define('RESOURCES',SITE_ROOT.'resources/');
    
@@ -36,7 +40,7 @@
     define('UTILS',SITE_ROOT.'utils/');
 
     //model products
-    define('UTILS_PRODUCTS',SITE_ROOT.'modules/page_products/utils/');
+    define('UTILS_PRODUCTS',SITE_ROOT .'modules/page_products/utils/');
     define('PRODUCTS_JS_LIB_PATH','/modules/page_products/view/lib/'); 
     define('PRODUCTS_JS_PATH', '/modules/page_products/view/js/'); 
     define('PRODUCTS_CSS_PATH', '/modules/page_products/view/css/');
@@ -45,3 +49,6 @@
     define('DAO_PRODUCTS',SITE_ROOT.'modules/page_products/model/DAO/');
     define('BLL_PRODUCTS',SITE_ROOT.'modules/page_products/model/BLL/');
     define('MODEL_PRODUCTS',SITE_ROOT.'modules/page_products/model/model/');
+    
+    //amigables
+    define('URL_AMIGABLES', TRUE);

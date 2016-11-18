@@ -7,7 +7,7 @@
             <div id="slides">
               <ul class="slides-container">                          
                 <li>
-                  <img src="view/img/slider/1.jpg" alt="img">
+                  <img src="<?php echo IMG_PATH ?>slider/1.jpg" alt="img">
                    <div class="slider_caption">
                     <h2>Instalamos energía solar</h2>
                     <p>A pesar de la reciente privatización solar seguimos apostando por un futuro sostenible, por eso te acercamos la posibilidad de realizar tu proyecto solar</p>
@@ -16,7 +16,7 @@
                   </li>
                 <!-- Start single slider-->
                 <li>
-                  <img src="view/img/slider/3.jpg" alt="img">
+                  <img src="<?php echo IMG_PATH ?>slider/3.jpg" alt="img">
                    <div class="slider_caption slider_right_caption">
                     <h2>Mantenemos instalaciones solares</h2>
                     <p>Debemos cuidar nuestra inversión por eso te proponemos diferentes tipos de mantenimiento segun tu inversión para que no pierdas mas dinero</p>
@@ -25,7 +25,7 @@
                 </li>
                 <!-- Start single slider-->
                 <li>
-                  <img src="view/img/slider/2.jpg" alt="img">
+                  <img src="<?php echo IMG_PATH ?>slider/2.jpg" alt="img">
                    <div class="slider_caption">
                     <h2>Reparamos equipos y modulos solares</h2>
                     <p>Aportamos todo tipo de soluciones ante el desgaste y rotura de los elementos de tu instalación solar</p>
