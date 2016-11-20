@@ -1,6 +1,5 @@
-<IfModule mod_rewrite.c>
 RewriteEngine on
-RewriteBase /
+RewriteCond %{HTTP_HOST} ^php_products.com$
 RewriteCond %{REQUEST_FILENAME} !-f
 Rewriterule ^(.*)/(.*)/(.*)$ index.php?module=$1&function=$2&aux=$3 [L,NC]
 
@@ -9,4 +8,3 @@ Rewriterule ^(.*)/(.*)$ index.php?module=$1&function=$2 [L,NC]
 
 RewriteCond %{REQUEST_FILENAME} !-f
 Rewriterule ^(.*)/$ index.php?module=$1 [L,NC]
-</IfModule>

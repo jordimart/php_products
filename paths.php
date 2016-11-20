@@ -40,15 +40,15 @@
     define('UTILS',SITE_ROOT.'utils/');
 
     //model products
-    define('UTILS_PRODUCTS',SITE_ROOT .'modules/page_products/utils/');
-    define('PRODUCTS_JS_LIB_PATH','/modules/page_products/view/lib/'); 
-    define('PRODUCTS_JS_PATH', '/modules/page_products/view/js/'); 
-    define('PRODUCTS_CSS_PATH', '/modules/page_products/view/css/');
+    define('UTILS_PRODUCTS',SITE_ROOT .'modules/products/utils/');
+    define('PRODUCTS_JS_LIB_PATH','/modules/products/view/lib/'); 
+    define('PRODUCTS_JS_PATH', '/modules/products/view/js/'); 
+    define('PRODUCTS_CSS_PATH', '/modules/products/view/css/');
    
-    define('MODEL_PATH_PRODUCTS',SITE_ROOT.'modules/page_products/model/');
-    define('DAO_PRODUCTS',SITE_ROOT.'modules/page_products/model/DAO/');
-    define('BLL_PRODUCTS',SITE_ROOT.'modules/page_products/model/BLL/');
-    define('MODEL_PRODUCTS',SITE_ROOT.'modules/page_products/model/model/');
+    define('MODEL_PATH_PRODUCTS',SITE_ROOT.'modules/products/model/');
+    define('DAO_PRODUCTS',SITE_ROOT.'modules/products/model/DAO/');
+    define('BLL_PRODUCTS',SITE_ROOT.'modules/products/model/BLL/');
+    define('MODEL_PRODUCTS',SITE_ROOT.'modules/products/model/model/');
     
     //amigables
     define('URL_AMIGABLES', TRUE);

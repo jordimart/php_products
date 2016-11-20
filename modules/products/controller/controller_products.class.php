@@ -1,210 +1,276 @@
 <?php
 
-include ($_SERVER['DOCUMENT_ROOT'] . "/modules/products/utils/functions_products.inc.php");
-include ($_SERVER['DOCUMENT_ROOT'] . "/utils/upload.php");
-//include ($_SERVER['DOCUMENT_ROOT'] . "/utils/common.inc.php");
-session_start();
+//controlador para el módulo de page products
 
-if ((isset($_POST['alta_products_json']))) {
+class controller_products {
 
-    alta_products();
-}
-
-function alta_products() {
-    $jsondata = array();
-    $productsJSON = json_decode($_POST["alta_products_json"], true);
-
-    $result = validate_products($productsJSON);
-
-//si no hay avatar pone la ruta de default
-    if (empty($_SESSION['result_avatar'])) {
-        $_SESSION['result_avatar'] = array('result' => true, 'error' => "", 'data' => '/media/default-avatar.png');
-    }
-    //coge la url de la foto
-    $result_avatar = $_SESSION['result_avatar'];
+    public function __construct() {
+        include (UTILS_PRODUCTS . 'utils.inc.php'); //utilidades de este módulopara pintar html por php
 
 
-    if (($result['result']) && ($result_avatar['result'])) {
-        $arrArgument = array(
-            'serial_number' => ucfirst($result['data']['serial_number']),
-            'category' => ($result['data']['category']),
-            'trademark' => ($result['data']['trademark']),
-            'model' => ($result['data']['model']),
-            'date_entry' => ($result['data']['date_entry']),
-            'date_exit' => ($result['data']['date_exit']),
-            'purchase_price' => ($result['data']['purchase_price']),
-            'sale_price' => ($result['data']['sale_price']),
-            'provider' => ucfirst($result['data']['provider']),
-            'weight' => ($result['data']['weight']),
-            'height' => ($result['data']['height']),
-            'width' => ($result['data']['width']),
-            'description' => ucfirst($result['data']['description']),
-            'status' => ($result['data']['status']),
-            'warranty' => ($result['data']['warranty']),
-            'avatar' => $result_avatar['data']
-        );
-        $_SESSION['result_avatar'] = array();
-
-        //aquí insertaremos en base de datos
-        //Para ello utilizo la funcion loadModel de la utilidad common.inc
-        $arrValue = false;
-        $path_model = $_SERVER['DOCUMENT_ROOT'] . '/modules/products/model/model/';
-        //llamamos al modelo produts y a crear
-        $arrValue = loadModel($path_model, "product_model", "create_product", $arrArgument);
-
-        if ($arrValue){
-                    $mensaje = "Su registro se ha efectuado correctamente, para finalizar compruebe que ha recibido un correo de validacion y siga sus instrucciones";
-                }else{
-                    $mensaje = "No se ha podido realizar su alta. Intentelo mas tarde";
-                 }
-
-        //redirigir a otra p�gina con los datos de $arrArgument y $mensaje
-        $_SESSION['product'] = $arrArgument;
-        $_SESSION['msje'] = $mensaje;
-        $callback = "index.php?module=products&view=results_products";
-
-        $jsondata["success"] = true;
-        $jsondata["redirect"] = $callback;
-
-        echo json_encode($jsondata);
-        exit;
-    } else {
-
-        $jsondata["success"] = false;
-        $jsondata["error"] = $result['error'];
-        $jsondata["error_avatar"] = $result_avatar['error'];
-
-        $jsondata["success1"] = false;
-        if ($result_avatar['resultado']) {
-            $jsondata["success1"] = true;
-            $jsondata["img_avatar"] = $result_avatar['datos'];
-        }
-        header('HTTP/1.0 400 Bad error');
-        echo json_encode($jsondata);
-        exit;
-    }
-}
-
-if ((isset($_GET["upload"])) && ($_GET["upload"] == true)) {
-
-    $result_avatar = upload_files();
-    $_SESSION['result_avatar'] = $result_avatar;
-    exit;
-}
-
-if (isset($_GET["delete"]) && $_GET["delete"] == true) {
-    $_SESSION['result_avatar'] = array();
-    $result = remove_files();
-    if ($result === true) {
-        echo json_encode(array("res" => true));
-        exit;
-    } else {
-        echo json_encode(array("res" => false));
-        exit;
-    }
-}
-
-if (isset($_GET["load"]) && $_GET["load"] == true) {
-
-    $jsondata = array();
-    if (isset($_SESSION['product'])) {
-        $jsondata["success"] = true;
-        $jsondata["product"] = $_SESSION['product'];
-    }
-    if (isset($_SESSION['msje'])) {
-        $jsondata["msje"] = $_SESSION['msje'];
-    }
-    close_session();
-    echo json_encode($jsondata);
-    exit;
-}
-
-function close_session() {
-    unset($_SESSION['product']);
-    unset($_SESSION['msje']);
-    $_SESSION = array(); // Destruye todas las variables de la sesión
-    session_destroy(); // Destruye la sesión
-}
-
-if ((isset($_GET["load_data"])) && ($_GET["load_data"] == true)) {
-
-    $jsondata = array();
-    if (isset($_SESSION['product'])) {
-        $jsondata["product"] = $_SESSION['product'];
-        echo json_encode($jsondata);
-        exit;
-    } else {
-        $jsondata["product"] = "";
-        echo json_encode($jsondata);
-        exit;
-    }
-}
-
-//Utilizamos este paso para conectar con la url y conseguir la lista de paises o devolver un fallo
-    if(  (isset($_GET["load_pais"])) && ($_GET["load_pais"] == true)  ){
-        $json = array();
-
-$url = 'http://www.oorsprong.org/websamples.countryinfo/CountryInfoService.wso/ListOfCountryNamesByName/JSON';
-$exists = false;
-        function url_exists($url){
-          $file_headers = @get_headers($url);
-          if(strpos($file_headers[0],"200 OK")==false)
-          {
-          $exists = false;
-        } else{
-          $path_model=$_SERVER['DOCUMENT_ROOT'].'/modules/products/model/model/';
-          $json = loadModel($path_model, "product_model", "obtain_paises", $url);
-        $exists = true;
-        }
-        return $exists;
+        $_SESSION['module'] = "products"; //guardamos el valor del módulo
     }
 
-        if($exists){
-            echo $json;
-            exit;
-        }else{
-            $json = "error";
-            echo $json;
-            exit;
+    public function page_products() {
+        require_once(VIEW_PATH_INC . "header.php");
+        require_once(VIEW_PATH_INC . "menu.php");
+
+        loadView('modules/products/view/', 'page_products.php');
+
+        require_once(VIEW_PATH_INC . "footer.html");
+    }
+
+    public function autocomplete_products() {
+        if ((isset($_POST["autocomplete"])) && ($_POST["autocomplete"] === "true")) {
+            set_error_handler('ErrorHandler');
+
+            try {
+
+                $nameProducts = loadModel(MODEL_PRODUCTS, "products_model", "select_column_products", "trademark");
+            } catch (Exception $e) {
+                showErrorPage(2, "ERROR - 503 BD", 'HTTP/1.0 503 Service Unavailable', 503);
+            }
+            restore_error_handler();
+
+            if ($nameProducts) {
+                $jsondata["trademark"] = $nameProducts;
+                echo json_encode($jsondata);
+                exit;
+            } else {
+
+                showErrorPage(2, "ERROR - 404 NO DATA", 'HTTP/1.0 404 Not Found', 404);
+            }
         }
     }
 
-    ///Utilizamos esto para acceder a los datos xml de marcas
-    if(  (isset($_GET["load_trademark"])) && ($_GET["load_trademark"] == true)  ){
-        $jsondata = array();
-        $json = array();
+    public function trademark() {
+        if (($_POST["trademark"])) {
 
-        $path_model=$_SERVER['DOCUMENT_ROOT'].'/modules/products/model/model/';
-        $json = loadModel($path_model, "product_model", "obtain_trademarks");
+            $result = filter_string($_POST["trademark"]);
+            if ($result['resultado']) {
+                $search = $result['datos'];
+            } else {
+                $search = '';
+            }
+            set_error_handler('ErrorHandler');
+            try {
 
-        if($json){
-            $jsondata["trademarks"] = $json;
-            echo json_encode($jsondata);
-            exit;
-        }else{
-            $jsondata["trademarks"] = "error";
-            echo json_encode($jsondata);
-            exit;
+                $arrArgument = array(
+                    'column' => 'trademark',
+                    'like' => $search
+                );
+                $producto = loadModel(MODEL_PRODUCTS, "products_model", "select_like_products", $arrArgument);
+            } catch (Exception $e) {
+                showErrorPage(2, "ERROR - 503 BD", 'HTTP/1.0 503 Service Unavailable', 503);
+            }
+            restore_error_handler();
+
+            if ($producto) {
+                $jsondata["product_autocomplete"] = $producto;
+                echo json_encode($jsondata);
+                exit;
+            } else {
+
+                showErrorPage(2, "ERROR - 404 NO DATA", 'HTTP/1.0 404 Not Found', 404);
+            }
         }
     }
 
-    /////////////////////////////////////////////////// load_poblaciones
-    if(  isset($_POST['idPoblac']) ){
-        $jsondata = array();
-        $json = array();
+    public function count_product() {
 
-        $path_model=$_SERVER['DOCUMENT_ROOT'].'/modules/products/model/model/';
-        $json = loadModel($path_model, "product_model", "obtain_models", $_POST['idPoblac']);
+        if (($_POST["count_product"])) {
 
-        if($json){
-            $jsondata["models"] = $json;
-            echo json_encode($jsondata);
-            exit;
-        }else{
-            $jsondata["models"] = "error";
-            echo json_encode($jsondata);
-            exit;
+            $result = filter_string($_POST["count_product"]);
+            if ($result['resultado']) {
+                $search = $result['datos'];
+            } else {
+                $search = '';
+            }
+
+            set_error_handler('ErrorHandler');
+            try {
+
+                $arrArgument = array(
+                    "column" => "trademark",
+                    "like" => $search
+                );
+                $total_rows = loadModel(MODEL_PRODUCTS, "products_model", "count_like_products", $arrArgument);
+            } catch (Exception $e) {
+                showErrorPage(2, "ERROR - 503 BD", 'HTTP/1.0 503 Service Unavailable', 503);
+            }
+            restore_error_handler();
+
+            if ($total_rows) {
+                $jsondata["num_products"] = $total_rows[0]["total"];
+                echo json_encode($jsondata);
+                exit;
+            } else {
+
+                showErrorPage(2, "ERROR - 404 NO DATA", 'HTTP/1.0 404 Not Found', 404);
+            }
         }
     }
 
-  
+    public function num_pages() {
+
+        //obtenemos el número de páginas según los productos que hayan en base de datos
+        if ((isset($_POST["num_pages"])) && ($_POST["num_pages"] === "true")) {
+
+            if (isset($_POST["keyword"])) {
+                $result = filter_string($_POST["keyword"]);
+                if ($result['resultado']) {
+                    $search = $result['datos'];
+                } else {
+                    $search = '';
+                }
+            } else {
+                $search = '';
+            }
+
+            //definimos el número de productos por página
+            $item_per_page = 6;
+            //buscamos el modelo
+            set_error_handler('ErrorHandler');
+
+            try {
+                $arrArgument = array(
+                    "column" => "trademark",
+                    "like" => $search
+                );
+
+                //este load utilizara la función de buscar el número total de productos
+                $arrValue = loadModel(MODEL_PRODUCTS, "products_model", "count_like_products", $arrArgument);
+                $get_total_rows = $arrValue[0]["total"]; //total records
+                $pages = ceil($get_total_rows / $item_per_page); //break total records into pages
+            } catch (Exception $e) {
+                //error en caso de que no funcione la base de datos, se pinta en el log
+                showErrorPage(2, "ERROR - 503 BD", 'HTTP/1.0 503 Service Unavailable', 503);
+            }
+
+            //change to defualt work error apache
+            restore_error_handler();
+
+            if ($get_total_rows) {
+                //devolvemos al frontend el número de páginas mediante JSON
+                $jsondata["pages"] = $pages;
+                echo json_encode($jsondata);
+                exit;
+            } else {
+                //si no hay productos lanzará el error de que no hay productos, se pinta en el log
+                showErrorPage(2, "ERROR - 404 NO DATA", 'HTTP/1.0 404 Not Found', 404);
+            }
+        }
+    }
+
+    function view_error_true() {
+        if ((isset($_POST["view_error"])) && ($_POST["view_error"] === "true")) {
+            //esta función pintaría el error mediante un template de php en html
+            showErrorPage(0, "ERROR - 503 BD Unavailable");
+        }
+    }
+
+    function view_error_false() {
+        if ((isset($_POST["view_error"])) && ($_POST["view_error"] === "false")) {
+            //esta función pintaría el error mediante un template de php en html
+            showErrorPage(0, "ERROR - 404 NO DATA");
+        }
+    }
+
+    function id_product() {
+//Obtenemos según un id de producto seleccionado en el frontend los detalles del producto
+        if (isset($_POST["idProduct"])) {
+
+            $arrValue = null;
+            $result = filter_string($_POST["idProduct"]);
+
+            if ($result['resultado']) {
+                $id = $result['datos'];
+            } else {
+                $id = 1;
+            }
+
+            set_error_handler('ErrorHandler');
+            try {
+                $arrValue = false;
+
+                $arrValue = loadModel(MODEL_PRODUCTS, "products_model", "details_products", $id);
+            } catch (Exception $e) {
+                //error en caso de no poder consultar en la base de datos, se pinta en el log
+                showErrorPage(2, "ERROR - 503 BD", 'HTTP/1.0 503 Service Unavailable', 503);
+            }
+            restore_error_handler();
+
+            if ($arrValue) {
+                //si hay datos en el array se los devolvemos al frontend mediante json
+                $jsondata["product"] = $arrValue[0];
+                echo json_encode($jsondata);
+                exit;
+            } else {
+                //error en caso de que no exista el producto, se pinta en el log
+                showErrorPage(2, "ERROR - 404 NO DATA", 'HTTP/1.0 404 Not Found', 404);
+            }
+        } else {
+
+            if (isset($_POST["page_num"])) {
+                $result = filter_num_int($_POST["page_num"]);
+                if ($result['resultado']) {
+                    $page_number = $result['datos'];
+                }
+            } else {
+                $page_number = 1;
+            }
+            //si no hay un producto seleccionado paginará los productos
+            $item_per_page = 6;
+
+            if (isset($_POST["keyword"])) {
+                $result = filter_string($_POST["keyword"]);
+                if ($result['resultado']) {
+                    $search = $result['datos'];
+                } else {
+                    $search = '';
+                }
+            } else {
+                $search = '';
+            }
+
+            if (isset($_POST["keyword"])) {
+                $result = filter_string($_POST["keyword"]);
+                if ($result['resultado']) {
+                    $search = $result['datos'];
+                } else {
+                    $search = '';
+                }
+            }
+
+            //esto se utiliza para no perder la posición al paginar
+            $position = (($page_number - 1) * $item_per_page);
+
+            $arrArgument = array(
+                'column' => 'trademark',
+                'like' => $search,
+                'position' => $position,
+                'limit' => $item_per_page
+            );
+            set_error_handler('ErrorHandler');
+            //utilizamos load model para consultar en bd los productos a paginar
+            try {
+                $arrValue = loadModel(MODEL_PRODUCTS, "products_model", "select_like_limit_products", $arrArgument);
+            } catch (Exception $e) {
+                //error si no se ha producido la consulta
+                //esta función pintaría el error mediante un template de php en html
+                showErrorPage(0, "ERROR - 503 BD Unavailable");
+            }
+            restore_error_handler();
+
+            if ($arrValue) {
+                //si hay valores en el array pintara por html hecho con php
+                paint_template_products($arrValue);
+            } else {
+                //error si no hay productos
+                //esta función pintaría el error mediante un template de php en html
+                showErrorPage(0, "ERROR - 404 NO PRODUCTS");
+            }
+        }
+    }
+
+}

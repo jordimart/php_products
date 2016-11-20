@@ -24,7 +24,7 @@
     <!-- Superslide css file-->
     <link  href="<?php echo CSS_PATH ?>superslides.css" rel="stylesheet">
     <!-- Slick slider css file -->
-    <link href="<?php echo CSS_PATH ?>slick.css" rel="stylesheet">
+    <!--<link href="<?php echo CSS_PATH ?>slick.css" rel="stylesheet">-->
     <!-- Circle counter cdn css file -->
     <link href='https://cdn.rawgit.com/pguso/jquery-plugin-circliful/master/css/jquery.circliful.css'rel='stylesheet prefetch'>
     <!-- smooth animate css file -->

@@ -7,7 +7,7 @@
             <a href="<?php amigable('?module=main'); ?>">Home</a>
         </li>     
         <li >
-            <a href="<?php amigable('?module=page_products&function=page_products'); ?>">List Products</a>     
+            <a href="<?php amigable('?module=products&function=page_products'); ?>">Products</a>     
         </li>
         <li >
             <a href="index.php?module=contact">Contact</a>

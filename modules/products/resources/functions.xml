@@ -5,8 +5,8 @@
         <uri>page_products</uri>
     </function>
     <function>
-        <name>autocomplete_page_products</name>
-        <uri>autocomplete_page_products</uri>
+        <name>autocomplete_products</name>
+        <uri>autocomplete_products</uri>
     </function>
     <function>
         <name>trademark</name>

@@ -14,7 +14,6 @@ function paint_template_error($message) {
     print ("<div id='page'>");
     print ("<br><br>");
     print ("<div id='header_error' class='status4xx'>");
-    //https://es.wikipedia.org/wiki/Anexo:C%C3%B3digos_de_estado_HTTP
     print("<h1>" . $message . "</h1>");
     print("</div>");
     print ("<div id='content'>");
@@ -91,8 +90,8 @@ function paint_template_products($arrData) {
 
 function paint_template_search($message) {
     $log = Log::getInstance();
-    $log->add_log_general("error paint_template_search", "products", "response " . http_response_code()); //$text, $controller, $function
-    $log->add_log_user("error paint_template_search", "", "products", "response " . http_response_code()); //$msg, $username = "", $controller, $function
+    $log->add_log_general("error paint_template_search", "page_products", "response " . http_response_code()); //$text, $controller, $function
+    $log->add_log_user("error paint_template_search", "", "page_products", "response " . http_response_code()); //$msg, $username = "", $controller, $function
 
     print ("<section> \n");
     print ("<div class='container'> \n");

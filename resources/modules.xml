@@ -9,7 +9,7 @@
         <uri>users</uri>
     </module>
     <module>
-        <name>page_products</name>
-        <uri>page_products</uri>
+        <name>products</name>
+        <uri>products</uri>
     </module>
 </modules>

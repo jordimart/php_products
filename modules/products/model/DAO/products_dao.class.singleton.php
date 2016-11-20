@@ -1,5 +1,5 @@
 <?php
-class page_products_dao {
+class products_dao {
 
     static $_instance;
 
@@ -13,20 +13,6 @@ class page_products_dao {
         return self::$_instance;
     }
 
-    //selecciona todos los producto de la db
-    public function list_products_DAO($db) {
-        $sql = "SELECT * FROM products";
-        $stmt = $db->ejecutar($sql);
-        return $db->listar($stmt);
-
-    }
-    //Consulta losdatos de un producto según un id pasado previamente
-    public function details_products_DAO($db,$id) {
-        $sql = "SELECT * FROM products WHERE serial_number LIKE '".$id."'";
-        $stmt = $db->ejecutar($sql);
-        return $db->listar($stmt);
-
-    }
     //Pagina los productos segun la posición en la página y los productos por página
     public function page_products_DAO($db,$arrArgument) {
         $position = $arrArgument['position'];
