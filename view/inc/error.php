@@ -2,6 +2,7 @@
 
   <div id="page">
         <div id="header" class="status<?php echo $arrData['code']?>">
+            <br><br><br><br><br><br>
             <?php
             if (isset($arrData) && !empty($arrData)) {
                 //https://es.wikipedia.org/wiki/Anexo:C%C3%B3digos_de_estado_HTTP
