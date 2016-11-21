@@ -50,7 +50,7 @@ function handlerModule($URI_module, $URI_function) {
                 $controllerClass = "controller_" . $URI_module;
                 $obj = new $controllerClass;
             } else {
-                
+                $text = 'Bad Request no esta en el path';
                 showErrorPage(4, "", 'HTTP/1.0 400 Bad Request no esta el path ', 400);
                
             }
@@ -59,7 +59,7 @@ function handlerModule($URI_module, $URI_function) {
         }
     }
     if (!$exist) {
-       
+       $text = 'Bad Request no esta en el xml';
         showErrorPage(4, "", 'HTTP/1.0 400 Bad Request no esta en xml', 400);
         
     }
@@ -77,7 +77,7 @@ function handlerFunction($module, $obj, $URI_function) {
         }
     }
     if (!$exist) {
-        
+        $text = 'Bad Request no esta la funcion';
         showErrorPage(4, "", 'HTTP/1.0 400 Bad Request no esta la funcion en xml', 400);
        
     } else {
