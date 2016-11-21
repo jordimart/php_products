@@ -33,13 +33,13 @@
             </div>
             <div class="media-body">
                 <div id="text-product">
-                    <h3 class="media-heading title-product"  id="trademark"></h3>
-                    <p class="text-limited" id="model" ></p>
-                    <p class="text-limited" id="serial_number" ></p>
-                    <p class="text-limited" id="category" ></p>
-                    <p class="text-limited" id="description" ></p>
+                    <h3 class="media-heading title-product"  id="provincia"></h3>
+                    <p class="text-limited" id="nombre" ></p>
+                    <p class="text-limited" id="precio_menu" ></p>
+                    <p class="text-limited" id="precio_menu_almuerzo" ></p>
+                    <p class="text-limited" id="precio_menu_noche" ></p>
                     <br>
-                    <h5 > <strong  id="price_product"></strong> </h5>
+                    <h5 > <strong  id="valoracion"></strong> </h5>
                 </div>
             </div>
         </div>

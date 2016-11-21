@@ -12,22 +12,22 @@ $(document).ready(function () {
             $('.pagination').html('');
 
             var img_product = document.getElementById('img_product');
-            img_product.innerHTML = '<img src="../../' + product.avatar +
+            img_product.innerHTML = '<img src="../../' + product.foto +
                     '" class="img-product"> ';
 
-            var trademark = document.getElementById('trademark');
-            trademark.innerHTML = product.trademark;
-            var model = document.getElementById('model');
-            model.innerHTML = "Model: " + product.model;
-            var serial_number = document.getElementById('serial_number');
-            serial_number.innerHTML = "Serial_number: " + product.serial_number;
-            var category = document.getElementById('category');
-            category.innerHTML = "Country: " + product.category;
-            var desc_product = document.getElementById('description');
-            desc_product.innerHTML = "Description: " + product.description;
-            var price_product = document.getElementById('price_product');
-            price_product.innerHTML = "Precio: " + product.sale_price +
-                    " €";
+            var provincia = document.getElementById('provincia');
+            provincia.innerHTML = product.provincia;
+            var nombre = document.getElementById('nombre');
+            nombre.innerHTML = "Nombre: " + product.nombre;
+            var sprecio_menu = document.getElementById('precio_menu');
+            precio_menu.innerHTML = "Menu del día: " + product.precio_menu+" € ";
+            var precio_menu_almuerzo = document.getElementById('precio_menu_almuerzo');
+           precio_menu_almuerzo.innerHTML = "Almuerzo popular: " + product.precio_menu_almuerzo+" € ";
+            var precio_menu_noche = document.getElementById('precio_menu_noche');
+            precio_menu_noche.innerHTML = "Menu cena: " + product.precio_menu_noche+" € ";
+            var valoracion = document.getElementById('valoracion');
+            valoracion.innerHTML = "Valoracion: " + product.valoracion +
+                    " estrellas";
 
         })
                 .fail(function (xhr) {

@@ -57,14 +57,14 @@ function paint_template_products($arrData) {
             print('<div class="table-cell">');
             print('<div class="media">');
             print('<div class="pull-left">');
-            print('<img src="' . $product['avatar'] . '" class="icon-md" height="80" width="80">');
+            print('<img src="' . $product['foto'] . '" class="icon-md" height="80" width="80">');
             print('</div>');
             print('<div class="media-body">');
-            print('<h3 class="media-heading">' . $product['trademark'] . '</h3>');
-            print('<p>' . $product['model'] . '</p>');
-            print('<p>' . $product['description'] . '</p>');
-            print('<h5> <strong>Precio:' . $product['sale_price'] . '</strong><strong>€</strong> </h5>');
-            print("<div id='" . $product['serial_number'] . "' class='product_name' type='button'> Read Details </div>");
+            print('<h3 class="media-heading">' . $product['provincia'] . '</h3>');
+            print('<p>' . $product['nombre'] . '</p>');
+            print('<p>' . $product['precio_menu'] . '</p>');
+            print('<h5> <strong>Precio:' . $product['precio_menu_almuerzo'] . '</strong><strong>€</strong> </h5>');
+            print("<div id='" . $product['id'] . "' class='product_name' type='button'> Read Details </div>");
 
             print('</div>');
             print('</div>');

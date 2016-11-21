@@ -23,14 +23,14 @@ class controller_products {
 
             try {
 
-                $nameProducts = loadModel(MODEL_PRODUCTS, "products_model", "select_column_products", "trademark");
+                $nameProducts = loadModel(MODEL_PRODUCTS, "products_model", "select_column_products", "provincia");
             } catch (Exception $e) {
                 showErrorPage(2, "ERROR - 503 BD", 'HTTP/1.0 503 Service Unavailable', 503);
             }
             restore_error_handler();
 
             if ($nameProducts) {
-                $jsondata["trademark"] = $nameProducts;
+                $jsondata["provincia"] = $nameProducts;
                 echo json_encode($jsondata);
                 exit;
             } else {
@@ -40,10 +40,10 @@ class controller_products {
         }
     }
 
-    public function trademark() {
-        if (($_POST["trademark"])) {
+    public function provincia() {
+        if (($_POST["provincia"])) {
 
-            $result = filter_string($_POST["trademark"]);
+            $result = filter_string($_POST["provincia"]);
             if ($result['resultado']) {
                 $search = $result['datos'];
             } else {
@@ -53,7 +53,7 @@ class controller_products {
             try {
 
                 $arrArgument = array(
-                    'column' => 'trademark',
+                    'column' => 'provincia',
                     'like' => $search
                 );
                 $producto = loadModel(MODEL_PRODUCTS, "products_model", "select_like_products", $arrArgument);
@@ -88,7 +88,7 @@ class controller_products {
             try {
 
                 $arrArgument = array(
-                    "column" => "trademark",
+                    "column" => "provincia",
                     "like" => $search
                 );
                 $total_rows = loadModel(MODEL_PRODUCTS, "products_model", "count_like_products", $arrArgument);
@@ -131,7 +131,7 @@ class controller_products {
 
             try {
                 $arrArgument = array(
-                    "column" => "trademark",
+                    "column" => "provincia",
                     "like" => $search
                 );
 
@@ -246,7 +246,7 @@ class controller_products {
         $position = (($page_number - 1) * $item_per_page);
 
         $arrArgument = array(
-            'column' => 'trademark',
+            'column' => 'provincia',
             'like' => $search,
             'position' => $position,
             'limit' => $item_per_page

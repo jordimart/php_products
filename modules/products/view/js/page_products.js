@@ -64,7 +64,7 @@ function search(keyword) {
 
 function search_product(keyword) {
     $.post(
-            "../../products/trademark/", {'trademark': keyword},
+            "../../products/provincia/", {'provincia': keyword},
             function (data, status) {
                 var json = JSON.parse(data);
                 var product = json.product_autocomplete;
@@ -73,22 +73,22 @@ function search_product(keyword) {
                 $('.pagination').html('');
 
                 var img_prod = document.getElementById('img_product');
-                img_prod.innerHTML = '<img src="../../' + product[0].avatar +
+                img_prod.innerHTML = '<img src="../../' + product[0].foto +
                         '" class="prodImg"> ';
 
-                var trademark = document.getElementById('trademark');
-                trademark.innerHTML = product[0].trademark;
-                var model = document.getElementById('model');
-                model.innerHTML = "Model: " + product[0].model;
-                var serial_number = document.getElementById('serial_number');
-                serial_number.innerHTML = "Serial_number: " + product[0].serial_number;
-                var category = document.getElementById('category');
-                category.innerHTML = "Country: " + product[0].category;
-                var desc_product = document.getElementById('description');
-                desc_product.innerHTML = "Description: " + product[0].description;
-                var price_product = document.getElementById('price_product');
-                price_product.innerHTML = "Precio: " + product[0].sale_price +
-                        " €";
+                var provincia = document.getElementById('provincia');
+                provincia.innerHTML = product[0].provincia;
+                var nombre = document.getElementById('nombre');
+                nombre.innerHTML = "Nombre: " + product[0].nombre;
+                var precio_menu = document.getElementById('precio_menu');
+                precio_menu.innerHTML = "Menu del día: " + product[0].precio_menu+" € ";
+                var precio_menu_almuerzo = document.getElementById('precio_menu_almuerzo');
+                precio_menu_almuerzo.innerHTML = "Almuerzo popular: " + product[0].precio_menu_almuerzo+" € ";
+                var precio_menu_noche = document.getElementById('precio_menu_noche');
+                precio_menu_noche.innerHTML = "Menu cena: " + product[0].precio_menu_noche+" € ";
+                var valoracion = document.getElementById('valoracion');
+                valoracion.innerHTML = "Valoracion: " + product[0].valoracion +
+                        " estrellas";
 
 
             }).fail(function (xhr) {
@@ -196,11 +196,11 @@ $(document).ready(function () {
             function (data, status) {
 
                 var json = JSON.parse(data);
-                var trademark = json.trademark;
+                var provincia = json.provincia;
 
                 var suggestions = new Array();
-                for (var i = 0; i < trademark.length; i++) {
-                    suggestions.push(trademark[i].trademark);
+                for (var i = 0; i < provincia.length; i++) {
+                    suggestions.push(provincia[i].provincia);
                 }
 
                 $("#keyword").autocomplete({
