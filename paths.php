@@ -41,9 +41,9 @@
 
     //model products
     define('UTILS_PRODUCTS',SITE_ROOT .'modules/products/utils/');
-    define('PRODUCTS_JS_LIB_PATH','modules/products/view/lib/'); 
-    define('PRODUCTS_JS_PATH', 'modules/products/view/js/'); 
-    define('PRODUCTS_CSS_PATH', 'modules/products/view/css/');
+    define('PRODUCTS_JS_LIB_PATH','/modules/products/view/lib/'); 
+    define('PRODUCTS_JS_PATH', '/modules/products/view/js/'); 
+    define('PRODUCTS_CSS_PATH', '/modules/products/view/css/');
    
     define('MODEL_PATH_PRODUCTS',SITE_ROOT.'modules/products/model/');
     define('DAO_PRODUCTS',SITE_ROOT.'modules/products/model/DAO/');
