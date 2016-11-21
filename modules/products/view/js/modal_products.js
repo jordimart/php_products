@@ -2,11 +2,9 @@
 $(document).ready(function() {
   $('.product_name').click(function() {
     var id = this.getAttribute('id');
-
-    $.get(
-        "index.php?module=page_products&function=id_product&idProduct=" +
-        id,
-        function(data, status) {
+    console.log(id);
+    $.post("../../products/id_product/",{'idProduct': id},function(data, status) {
+            
           var json = JSON.parse(data);
           var product = json.product;
 
@@ -14,7 +12,7 @@ $(document).ready(function() {
           $('.pagination').html('');
 
           var img_product = document.getElementById('img_product');
-          img_product.innerHTML = '<img src="' + product.avatar +
+          img_product.innerHTML = '<img src="../../' + product.avatar +
             '" class="img-product"> ';
 
           var trademark = document.getElementById('trademark');
@@ -34,7 +32,7 @@ $(document).ready(function() {
         })
       .fail(function(xhr) {
         $("#results").load(
-          "index.php?module=page_products&function=view_error_true&view_error=true"
+          "../../products/view_error_true/", {'view_error': true}
         );
       });
   });

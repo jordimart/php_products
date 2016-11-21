@@ -12,6 +12,12 @@ class products_dao {
             self::$_instance = new self();
         return self::$_instance;
     }
+    
+    public function details_products_DAO($db, $id) {
+        $sql = "SELECT * FROM products WHERE serial_number LIKE '".$id."'";
+        $stmt = $db->ejecutar($sql);
+        return $db->listar($stmt);
+    }
 
     //Pagina los productos segun la posición en la página y los productos por página
     public function page_products_DAO($db,$arrArgument) {

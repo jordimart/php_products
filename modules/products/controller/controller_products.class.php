@@ -177,7 +177,7 @@ class controller_products {
     }
 
     function id_product() {
-//Obtenemos según un id de producto seleccionado en el frontend los detalles del producto
+       //Obtenemos según un id de producto seleccionado en el frontend los detalles del producto
         if (isset($_POST["idProduct"])) {
 
             $arrValue = null;
@@ -209,7 +209,10 @@ class controller_products {
                 //error en caso de que no exista el producto, se pinta en el log
                 showErrorPage(2, "ERROR - 404 NO DATA", 'HTTP/1.0 404 Not Found', 404);
             }
-        } else {
+        } 
+        
+    }
+            function obtain_products() {
 
             if (isset($_POST["page_num"])) {
                 $result = filter_num_int($_POST["page_num"]);
@@ -271,6 +274,6 @@ class controller_products {
                 showErrorPage(0, "ERROR - 404 NO PRODUCTS");
             }
         }
-    }
+    
 
 }

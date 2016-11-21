@@ -16,6 +16,10 @@ class products_bll {
             self::$_instance = new self();
         return self::$_instance;
     }
+    
+    public function details_products_BLL($id) {
+        return $this->dao->details_products_DAO($this->db, $id);
+    }
 
     public function page_products_BLL($arrArgument) {
         return $this->dao->page_products_DAO($this->db,$arrArgument);

@@ -5,8 +5,8 @@
 function paint_template_error($message) {
     $log = Log::getInstance();
     //añadimos los errores al log general y de user
-    $log->add_log_general("error paint_template_error", "page_products", "response" . http_response_code()); //$text, $controller, $function
-    $log->add_log_user("error paint_template_error", "", "page_products", "response" . http_response_code()); //$msg, $username = "", $controller, $function
+    $log->add_log_general("error paint_template_error", "products", "response" . http_response_code()); //$text, $controller, $function
+    $log->add_log_user("error paint_template_error", "", "products", "response" . http_response_code()); //$msg, $username = "", $controller, $function
 
     $arrData = response_code(http_response_code());
 
@@ -29,7 +29,7 @@ function paint_template_error($message) {
 
 //pintamos el html por php los productos en el modal
 function paint_template_products($arrData) {
-    print ("<script type='text/javascript' src='/modules/page_products/view/js/modal_product.js' ></script>");
+    print ("<script type='text/javascript' src='/modules/products/view/js/modal_products.js' ></script>");
     print ("<section >");
     print ("<div class='container'>");
     print ("<div id='list_prod' class='row text-center pad-row'>");

@@ -40,7 +40,7 @@ function search(keyword) {
            // url = "../../products/id_product/";
             //config = {'keyword': keyword};
         //}
-        $("#results").load("../../products/id_product/",{'keyword': keyword});
+        $("#results").load("../../products/obtain_products/",{'keyword': keyword});
 
         if (pages !== 0) {
             refresh();
@@ -55,12 +55,12 @@ function search(keyword) {
                 e.preventDefault();
                 if (!keyword)
                     $("#results").load(
-                            "../../products/id_product/", {
+                            "../../products/obtain_products/", {
                                 'page_num': num
                             });
                 else
                     $("#results").load(
-                            "../../products/id_product/", {
+                            "../../products/obtain_products/", {
                                 'page_num': num,
                                 'keyword': keyword
                             });

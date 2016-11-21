@@ -15,6 +15,10 @@ class products_model {
             self::$_instance = new self();
         return self::$_instance;
     }
+    
+    public function details_products($id) {
+        return $this->bll->details_products_BLL($id);
+    }
 
     public function page_products($arrArgument) {
         return $this->bll->page_products_BLL($arrArgument);
