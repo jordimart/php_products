@@ -34,7 +34,7 @@ function response_code($code = NULL) {
                 break;
             case 305: $text = 'Use Proxy';
                 break;
-            case 400: $text = 'Bad Request';
+            case 400: //$text = 'Bad Request';
                 break;
             case 401: $text = 'Unauthorized';
                 break;

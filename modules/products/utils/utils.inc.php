@@ -45,7 +45,7 @@ function paint_template_products($arrData) {
         $i = 0;
         foreach ($arrData as $product) {
             $i++;
-            if (count($arrData) % 2 !== 0 && i >= count($arrData)) {
+            if (count($arrData) % 2 !== 0 && $i >= count($arrData)) {
                 print( '<div class="odd_prod">');
             } else {
                 if ($i % 2 != 0) {
@@ -72,7 +72,7 @@ function paint_template_products($arrData) {
 
 
             print('</div>');
-            if (count($arrData) % 2 !== 0 && i >= count($arrData)) {
+            if (count($arrData) % 2 !== 0 && $i >= count($arrData)) {
                 print( '</div>');
             } else {
                 if ($i % 2 == 0) {
