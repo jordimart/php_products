@@ -1,13 +1,10 @@
 <?php
 
 //controlador para el módulo de page products
-
 class controller_products {
 
     public function __construct() {
         include (UTILS_PRODUCTS . 'utils.inc.php'); //utilidades de este módulopara pintar html por php
-
-
         $_SESSION['module'] = "products"; //guardamos el valor del módulo
     }
 
@@ -177,7 +174,7 @@ class controller_products {
     }
 
     function id_product() {
-       //Obtenemos según un id de producto seleccionado en el frontend los detalles del producto
+        //Obtenemos según un id de producto seleccionado en el frontend los detalles del producto
         if (isset($_POST["idProduct"])) {
 
             $arrValue = null;
@@ -209,71 +206,70 @@ class controller_products {
                 //error en caso de que no exista el producto, se pinta en el log
                 showErrorPage(2, "ERROR - 404 NO DATA", 'HTTP/1.0 404 Not Found', 404);
             }
-        } 
-        
+        }
     }
-            function obtain_products() {
 
-            if (isset($_POST["page_num"])) {
-                $result = filter_num_int($_POST["page_num"]);
-                if ($result['resultado']) {
-                    $page_number = $result['datos'];
-                }
-            } else {
-                $page_number = 1;
+    function obtain_products() {
+
+        if (isset($_POST["page_num"])) {
+            $result = filter_num_int($_POST["page_num"]);
+            if ($result['resultado']) {
+                $page_number = $result['datos'];
             }
-            //si no hay un producto seleccionado paginará los productos
-            $item_per_page = 6;
+        } else {
+            $page_number = 1;
+        }
+        //si no hay un producto seleccionado paginará los productos
+        $item_per_page = 6;
 
-            if (isset($_POST["keyword"])) {
-                $result = filter_string($_POST["keyword"]);
-                if ($result['resultado']) {
-                    $search = $result['datos'];
-                } else {
-                    $search = '';
-                }
+        if (isset($_POST["keyword"])) {
+            $result = filter_string($_POST["keyword"]);
+            if ($result['resultado']) {
+                $search = $result['datos'];
             } else {
                 $search = '';
             }
+        } else {
+            $search = '';
+        }
 
-            if (isset($_POST["keyword"])) {
-                $result = filter_string($_POST["keyword"]);
-                if ($result['resultado']) {
-                    $search = $result['datos'];
-                } else {
-                    $search = '';
-                }
-            }
-
-            //esto se utiliza para no perder la posición al paginar
-            $position = (($page_number - 1) * $item_per_page);
-
-            $arrArgument = array(
-                'column' => 'trademark',
-                'like' => $search,
-                'position' => $position,
-                'limit' => $item_per_page
-            );
-            set_error_handler('ErrorHandler');
-            //utilizamos load model para consultar en bd los productos a paginar
-            try {
-                $arrValue = loadModel(MODEL_PRODUCTS, "products_model", "select_like_limit_products", $arrArgument);
-            } catch (Exception $e) {
-                //error si no se ha producido la consulta
-                //esta función pintaría el error mediante un template de php en html
-                showErrorPage(0, "ERROR - 503 BD Unavailable");
-            }
-            restore_error_handler();
-
-            if ($arrValue) {
-                //si hay valores en el array pintara por html hecho con php
-                paint_template_products($arrValue);
+        if (isset($_POST["keyword"])) {
+            $result = filter_string($_POST["keyword"]);
+            if ($result['resultado']) {
+                $search = $result['datos'];
             } else {
-                //error si no hay productos
-                //esta función pintaría el error mediante un template de php en html
-                showErrorPage(0, "ERROR - 404 NO PRODUCTS");
+                $search = '';
             }
         }
-    
+
+        //esto se utiliza para no perder la posición al paginar
+        $position = (($page_number - 1) * $item_per_page);
+
+        $arrArgument = array(
+            'column' => 'trademark',
+            'like' => $search,
+            'position' => $position,
+            'limit' => $item_per_page
+        );
+        set_error_handler('ErrorHandler');
+        //utilizamos load model para consultar en bd los productos a paginar
+        try {
+            $arrValue = loadModel(MODEL_PRODUCTS, "products_model", "select_like_limit_products", $arrArgument);
+        } catch (Exception $e) {
+            //error si no se ha producido la consulta
+            //esta función pintaría el error mediante un template de php en html
+            showErrorPage(0, "ERROR - 503 BD Unavailable");
+        }
+        restore_error_handler();
+
+        if ($arrValue) {
+            //si hay valores en el array pintara por html hecho con php
+            paint_template_products($arrValue);
+        } else {
+            //error si no hay productos
+            //esta función pintaría el error mediante un template de php en html
+            showErrorPage(0, "ERROR - 404 NO PRODUCTS");
+        }
+    }
 
 }

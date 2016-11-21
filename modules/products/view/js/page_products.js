@@ -13,34 +13,12 @@ function refresh() {
 
 function search(keyword) {
 
-    if (!keyword) {
-       //console.log("entro a sin key");
-       //url = "index.php?module=page_products&function=num_pages&num_pages=true";
-        url = "../../products/num_pages/";
-        //config = {'num_pages': true};
-    } else {
-
-        //url = "index.php?module=page_products&function=num_pages&num_pages=true&keyword=" + keyword;
-        url = "../../products/num_pages/";
-       // config = {'num_pages': true, 'keyword': keyword};
-    }
     $.post("../../products/num_pages/", {'num_pages': true, 'keyword': keyword}, function (data, status) {
-         //console.log("data:"+data);
+
         var json = JSON.parse(data);
         var pages = json.pages;
-       
 
-       // if (!keyword) {
-            // url = "index.php?module=page_products&function=id_product";
-            //url = "../../products/id_product/";
-            //config = {};
-
-        //} else {
-            //url = "index.php?module=page_products&function=id_product&keyword=" + keyword;
-           // url = "../../products/id_product/";
-            //config = {'keyword': keyword};
-        //}
-        $("#results").load("../../products/obtain_products/",{'keyword': keyword});
+        $("#results").load("../../products/obtain_products/", {'keyword': keyword});
 
         if (pages !== 0) {
             refresh();
@@ -86,8 +64,6 @@ function search(keyword) {
 
 function search_product(keyword) {
     $.post(
-            //"index.php?module=page_products&function=trademark&trademark=" +
-            // keyword,
             "../../products/trademark/", {'trademark': keyword},
             function (data, status) {
                 var json = JSON.parse(data);
@@ -126,7 +102,6 @@ function search_product(keyword) {
 
 function count_product(keyword) {
     $.post(
-            //"index.php?module=page_products&function=count_product&count_product=" + keyword,
             "../../products/count_product/", {'count_product': keyword},
             function (data, status) {
                 var json = JSON.parse(data);
@@ -219,7 +194,7 @@ $(document).ready(function () {
     $.post(
             "../../products/autocomplete_products/", {'autocomplete': true},
             function (data, status) {
-               
+
                 var json = JSON.parse(data);
                 var trademark = json.trademark;
 
