@@ -8,7 +8,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Solar-spain |
-        <?php if($_GET['module']){ echo $_GET['module'];}else{ echo "main";} ?>
+        <!--<?php if($_GET['module']){ echo $_GET['module'];}else{ echo "main";} ?>-->
     </title>
 
     <!-- Mobile Specific Metas
