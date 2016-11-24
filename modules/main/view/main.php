@@ -1,45 +1,65 @@
-<!--=========== BEGIN SLIDER SECTION ================-->
-    <section id="slider">
-      <div class="row">
-        <div class="col-lg-12 col-md-12">
-          <div class="slider_area">
-            <!-- Start super slider -->
-            <div id="slides">
-              <ul class="slides-container">                          
-                <li>
-                  <img src="<?php echo IMG_PATH ?>slider/1.jpg" alt="img">
-                   <div class="slider_caption">
-                    <h2>Instalamos energía solar</h2>
-                    <p>A pesar de la reciente privatización solar seguimos apostando por un futuro sostenible, por eso te acercamos la posibilidad de realizar tu proyecto solar</p>
-                    <a class="slider_btn" href="#">Saber más</a>
-                  </div>
-                  </li>
-                <!-- Start single slider-->
-                <li>
-                  <img src="<?php echo IMG_PATH ?>slider/3.jpg" alt="img">
-                   <div class="slider_caption slider_right_caption">
-                    <h2>Mantenemos instalaciones solares</h2>
-                    <p>Debemos cuidar nuestra inversión por eso te proponemos diferentes tipos de mantenimiento segun tu inversión para que no pierdas mas dinero</p>
-                    <a class="slider_btn" href="#">Saber más</a>
-                  </div>
-                </li>
-                <!-- Start single slider-->
-                <li>
-                  <img src="<?php echo IMG_PATH ?>slider/2.jpg" alt="img">
-                   <div class="slider_caption">
-                    <h2>Reparamos equipos y modulos solares</h2>
-                    <p>Aportamos todo tipo de soluciones ante el desgaste y rotura de los elementos de tu instalación solar</p>
-                    <a class="slider_btn" href="#">Saber más</a>
-                  </div>
-                </li>
-              </ul>
-              <nav class="slides-navigation">
-                <a href="#" class="next"></a>
-                <a href="#" class="prev"></a>
-              </nav>
+
+    
+  <!--Background image-->    
+<img src="<?php echo IMG_PATH ?>slide.jpg" alt="">  
+<div class="content page1">
+    <div class="container_12">
+
+        <div class="clear"></div>
+        <!--grid restaurants-->
+        <div class="grid_12">
+            <div class="car_wrap">
+                <h2>Cerca de ti</h2>
+                <a href="#" class="prev"></a><a href="#" class="next"></a>
+                <ul class="carousel1">
+                    <li>
+                        <div><img src="<?php echo IMG_PATH ?>page1_img1.jpg" alt="">
+                            <div class="col1 upp"> <a href="#">Lorem ipsum doamet consectet</a></div>
+                            <span> Dorem ipsum dolor amet consectetur</span>
+                            
+                        </div>
+                    </li>
+                    <li>
+                        <div><img src="<?php echo IMG_PATH ?>page1_img2.jpg" alt="">
+                            <div class="col1 upp"> <a href="#">Lorem ipsum doamet consectet</a></div>
+                            <span> Dorem ipsum dolor amet consectetur</span>
+                            
+                        </div>
+                    </li>
+                    <li>
+                        <div><img src="<?php echo IMG_PATH ?>page1_img3.jpg" alt="">
+                            <div class="col1 upp"> <a href="#">Lorem ipsum doamet consectet</a></div>
+                            <span> Dorem ipsum dolor amet consectetur</span>
+                          
+                        </div>
+                    </li>
+                    <li>
+                        <div><img src="<?php echo IMG_PATH ?>page1_img4.jpg" alt="">
+                            <div class="col1 upp"> <a href="#">Lorem ipsum doamet consectet</a></div>
+                            <span> Dorem ipsum dolor amet consectetur</span>
+                           
+                        </div>
+                    </li>
+
+                </ul>
             </div>
-          </div>
         </div>
-      </div>
-    </section>
-    <!--=========== END SLIDER SECTION ================-->
+        <div class="clear"></div>
+        <div class="bottom_block">
+            <div class="grid_6">
+                <nav>
+                    <ul>
+                        <li class="current"><a href="index.html">Home</a></li>
+                        <li><a href="about-us.html">About Us</a></li>
+                        <li><a href="menu.html">Menu</a></li>
+                        <li><a href="portfolio.html">Portfolio</a></li>
+                        <li><a href="news.html">News</a></li>
+                        <li><a href="contacts.html">Contacts</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div><!--container-->
+</div>
+</div>
