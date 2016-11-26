@@ -12,4 +12,8 @@
         <name>products</name>
         <uri>products</uri>
     </module>
+    <module>
+        <name>contact</name>
+        <uri>contact</uri>
+    </module>
 </modules>
