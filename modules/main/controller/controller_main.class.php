@@ -3,7 +3,7 @@
 class controller_main {
 
     public function __construct() {
-        
+        $_SESSION['module'] = "main";
     }
 
     public function begin() {
