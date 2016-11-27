@@ -144,7 +144,7 @@ function ErrorHandler($errno, $errstr, $errfile, $errline) {
     }
     $msg = "ERROR: [$errno] $errstr\r\n" . "$error on line $errline in file $errfile\r\n";
 
-    $log = Log::getInstance();
+    $log = log::getInstance();
     $log->add_log_general($msg, $_SESSION['module'], "response " . http_response_code()); //$text, $controller, $function
     $log->add_log_user($msg, "", $_SESSION['module'], "response " . http_response_code()); //$msg, $username = "", $controller, $function
 }

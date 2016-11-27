@@ -18,32 +18,7 @@ class controller_contact {
     public function process_contact() {
         if ($_POST['token'] === "contact_form") {
 
-            //////////////// Envio del correo al usuario
-            $arrArgument = array(
-                'type' => 'contact',
-                'token' => '',
-                'inputName' => $_POST['inputName'],
-                'inputEmail' => $_POST['inputEmail'],
-                'inputSubject' => $_POST['inputSubject'],
-                'inputMessage' => $_POST['inputMessage']
-            );
-            set_error_handler('ErrorHandler');
-            try {
-                /*
-                  if (enviar_email($arrArgument)){
-                  echo "<div class='alert alert-success'>Your message has been sent </div>";
-                  } else {
-                  echo "<div class='alert alert-error'>Server error. Try later...</div>";
-                  }
-                 */
-                echo "<div class='alert alert-success'>" . enviar_email($arrArgument) . " </div>";
-            } catch (Exception $e) {
-                echo "<div class='alert alert-error'>Server error. Try later...</div>";
-            }
-            restore_error_handler();
-
-
-            //////////////// Envio del correo al admin de la ap web
+           //Envio un correo al admin de la peticion
             $arrArgument = array(
                 'type' => 'admin',
                 'token' => '',
@@ -54,21 +29,41 @@ class controller_contact {
             );
             set_error_handler('ErrorHandler');
             try {
-                /*
-                  if (enviar_email($arrArgument)){
-                  echo "<div class='alert alert-success'>Your message has been sent </div>";
-                  } else {
-                  echo "<div class='alert alert-error'>Server error. Try later...</div>";
-                  }
-                 */
-                sleep(5);
-                echo "<div class='alert alert-success'>" . enviar_email($arrArgument) . " </div>";
+                //envia un correo con los datos introducidos
+                if (responder_email($arrArgument)) {
+                    $value = true;
+                } else {
+                    $value = false;
+                }
             } catch (Exception $e) {
-                echo "<div class='alert alert-error'>Server error. Try later...</div>";
+                $value = false;
+            }
+            restore_error_handler();
+
+             //Enviamos el correo al usuario
+            $arrArgument = array(
+                'type' => 'contact',
+                'token' => '',
+                'inputName' => $_POST['inputName'],
+                'inputEmail' => $_POST['inputEmail'],
+                'inputSubject' => $_POST['inputSubject'],
+                'inputMessage' => $_POST['inputMessage']
+            );
+            set_error_handler('ErrorHandler');
+            try {
+                //envia un correo al admin dependiendo de el resultado
+                //utiliza la función de utilidades mail.inv.php
+                if (responder_email($arrArgument) && ($value==true)) {
+                    echo "true|Tu mensaje ha sido enviado correctamente ";
+                } else {
+                    echo "false|Error en el servidor. Intentelo más tarde...";
+                }
+            } catch (Exception $e) {
+                echo "false|Error en el servidor. Intentelo más tarde...";
             }
             restore_error_handler();
         } else {
-            echo "<div class='alert alert-error'>Server error. Try later...</div>";
+            echo "false|Error en el servidor. Intentelo más tarde...";
         }
     }
 
