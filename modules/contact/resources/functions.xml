@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<functions>
+    <function>
+        <name>view_contact</name>
+        <uri>view_contact</uri>
+    </function>
+    <function>
+        <name>process_contact</name>
+        <uri>process_contact</uri>
+    </function>
+</functions>
